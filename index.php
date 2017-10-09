@@ -51,6 +51,7 @@
      		    </thead>
              <?php while ($row = mysql_fetch_array($result)){ // aca puedes hacer la consulta e iterarla con each. ?>
                <tr>
+                 <td class="hidden" id="idFac" name="idFac"><?php echo $row['idFac'] ?></td>
              	   <td><?php echo $row['idFac'] ?></td>
                  <td><?php echo utf8_encode($row['nomCliente']) ?></td>
                  <td><?php echo utf8_encode($row['nomFac']) ?></td>
@@ -58,11 +59,11 @@
                  <td>$<?php echo $row['importeTotal'] ?></td>
                  <td><?php echo $row['fechaPago'] ?></td>
                  <td>
-                   <button id="btnPagar" name="btnPagar" type="submit" class="btn btn-small btn-primary">
+                   <button id="btnPagar" name="btnPagar" type="submit" onclick="editarRegistro();" class="btn btn-small btn-primary">
                      <i class="fa fa-usd" aria-hidden="true"></i>
                    </button>
                    /
-                   <button id="btnEliminar" name="btnEliminar" type="submit" class="btn btn-small btn-danger">
+                   <button id="btnEliminar" name="btnEliminar" type="submit" onclick="eliminarRegistro();" class="btn btn-small btn-danger">
                      <i class="fa fa-times" aria-hidden="true"></i>
                    </button>
                  </td>

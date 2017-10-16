@@ -2,7 +2,6 @@
 <html lang="es">
 <?php
   include 'plantilla/header.php';
-  include 'php/mostrar.php';
 ?>
 <body>
   <?php
@@ -36,41 +35,44 @@
             aria-describedby="basic-addon1" required>
           </div>
         </div-->
+      </div>
+      <div class="elementos" id="dvListado">
+        <div class="card">
+          <div class="card-header">
+            <h5>
+              <i class="fa fa-pencil text-primary" aria-hidden="true"></i>
+              Ver / editar factura
+            </h5>
+          </div>
+          <div class="card-body">
 
-         <table id="tablaGen" class="col-md-12 table table-striped Estilo2" style="">
-             <thead>
-     		        <tr>
- 			           <th>No. cliente</th>
- 			           <th>Cliente</th>
-                  <th>Factura</th>
-                  <th>Importe sin IVA</th>
-                  <th>Importe total</th>
-                  <th>Fecha de pago</th>
-                  <th>Pagar/Eliminar</th>
-     		        </tr>
-     		    </thead>
-             <?php while ($row = mysql_fetch_array($result)){ // aca puedes hacer la consulta e iterarla con each. ?>
-               <tr>
-                 <td class="hidden" id="idFac" name="idFac"><?php echo $row['idFac'] ?></td>
-             	   <td><?php echo $row['idFac'] ?></td>
-                 <td><?php echo utf8_encode($row['nomCliente']) ?></td>
-                 <td><?php echo utf8_encode($row['nomFac']) ?></td>
-                 <td>$<?php echo $row['importeSinIVA'] ?></td>
-                 <td>$<?php echo $row['importeTotal'] ?></td>
-                 <td><?php echo $row['fechaPago'] ?></td>
-                 <td>
-                   <button id="btnPagar" name="btnPagar" type="submit" onclick="editarRegistro();" class="btn btn-small btn-primary">
-                     <i class="fa fa-usd" aria-hidden="true"></i>
-                   </button>
-                   /
-                   <button id="btnEliminar" name="btnEliminar" type="submit" onclick="eliminarRegistro();" class="btn btn-small btn-danger">
-                     <i class="fa fa-times" aria-hidden="true"></i>
-                   </button>
-                 </td>
-               </tr>
-             <?php }
-             ?>
-         </table>
+            <div class="table-responsive">
+              <table id="tblResult" class="table table-striped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th class="text-center">
+                      Id
+                    </th>
+                    <th class="text-center">
+                      Marca de motor
+                    </th>
+                    <th class="text-center">
+                      Eliminar
+                    </th>
+                    <th class="text-center">
+                      Editar
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyResult">
+
+                </tbody>
+
+              </table>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>

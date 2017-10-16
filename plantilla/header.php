@@ -12,4 +12,7 @@
     <!--Font-Awesome-->
     <link type="text/css" rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet" href="font-awesome/css/font-awesome.css"/>
+
+    <!-- SWET ALERT -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>

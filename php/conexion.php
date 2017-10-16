@@ -1,4 +1,25 @@
 <?php
-mysql_connect("localhost", "root", "") or die(mysql_error());
-mysql_select_db("facturas") OR DIE ("Error: No es posible establecer la conexión");
+class Conexion{
+  public function conectarBD(){
+
+   $hostname = "localhost";
+    $usuario = "root";
+    $password = "";
+    $basededatos = "pruebas";
+
+    $database = new mysqli($hostname, $usuario, $password, $basededatos);
+    $database->set_charset('utf8');
+    return($database);
+  }
+
+  public function desconectarDB($conexion){
+      $close = mysqli_close($conexion);
+          if(!$close){
+              echo 'Ha sucedido un error en la desconexion de la base de datos  ';
+          }
+      return $close;
+  }
+
+}
+
 ?>

@@ -1,17 +1,8 @@
 <?php
 include('ConsultaGetFactura.php');
-$ConsultaGetMotor = new ConsultaGetFactura;
+$ConsultaGetFactura = new ConsultaGetFactura;
 
-$consultaSelect = 'SELECT '.
-                  'r.id, '.
-                  'r.cliente, '
-                  'r.factura, '
-                  'r.importe, '
-                  'r.importeT, '
-                  'r.fechaP ';
-
-$consultaFrom = ' FROM registro r';
-$consulta = $consultaSelect.$consultaFrom;
+$consulta = 'SELECT * FROM registro';
 $response = $ConsultaGetFactura -> getConsultaFacturas($consulta);
 
 $jsonFinal = json_encode($response);

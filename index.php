@@ -1,88 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
 <?php
-  include 'plantilla/header.php';
+  require 'plantilla/header.php';
 ?>
-<body>
+<body class="fixed-nav" id="page-top" onload="getFacturas();">
   <?php
     include 'plantilla/menu.php';
   ?>
-  <hr>
-  <center><h1>Página principal del registro de facturas</h1></center>
+  <br>
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-4">
-          <button id="btnCrearPdf" name="btnCrearPdf" onclick="crearPdf();" type="submit" class="btn btn-success">
-            <i class="fa fa-floppy-o" aria-hidden="true"></i>
-            <span class="glyphicons glyphicons-floppy-disk"></span>
-            Generar Reportes
-          </button>
+    <div class="elementos hidden" id="dvAgregar">
+      <center><h1>Página de agregar facturas</h1></center>
+      <div  role="form" name="signup_form2" novalidate>
+        <div class="formgroup">
+          <label>Número de cliente:</label>
+          <input id="txtNumC" name="txtNumC" type="text" class="form-control" placeholder="Número de cliente" required>
         </div>
-        <!--div class="col-md-8">
+
+        <br>
+
+        <div class="formgroup">
+          <label>Nombre de cliente:</label>
+          <input id="txtNomC" name="txtNomC" type="text" class="form-control" placeholder="Nombre de cliente" required>
+        </div>
+
+        <br>
+
+        <div class="formgroup">
+          <label>Factura:</label>
+          <input id="txtFactura" name="txtFactura" type="text" class="form-control ancho" placeholder="Factura" required>
+        </div>
+
+        <br>
+
+        <div class="formgroup">
+          <label>Importe:</label>
+          <input id="txtImporte" name="txtImporte" type="text" class="form-control ancho" placeholder="Importe" required>
+        </div>
+
+        <br>
+
+        <div class="formgroup">
+          <label>Importe total:</label>
+          <input id="txtImporteT" name="txtImporteT" type="text" class="form-control ancho" placeholder="Importe total" required>
+        </div>
+
+        <br>
+
+        <div class="formgroup">
+          <label>Fecha de Pago:</label>
+          <div class='input-group date' id='datetimepicker1'>
+            <span class="input-group-addon">
+              <!--span class="glyphicon glyphicon-calendar"></span-->
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </span>
+            <input id="txtFechaP" name="txtFechaP" type="text" class="form-control ancho" placeholder="aaaa/mm/dd" required>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
           <div class="col-md-12">
-            <span class="input-group-addon"><b>Seleccione preiodo:</b>
-              <button type="button" name="button">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button></span>
-          </div>
-          <div class="col-md-6">
-            <input id="txtFechaI" type="date" class="form-control" name="txtFechaI"
-            aria-describedby="basic-addon1" required>
-          </div>
-          <div class="col-md-6">
-            <input id="txtFechaT" type="date" class="form-control" name="txtFechaT"
-            aria-describedby="basic-addon1" required>
-          </div>
-        </div-->
-      </div>
-      <div class="elementos" id="dvListado">
-        <div class="card">
-          <div class="card-header">
-            <h5>
-              <i class="fa fa-pencil text-primary" aria-hidden="true"></i>
-              Ver / editar factura
-            </h5>
-          </div>
-          <div class="card-body">
-
-            <div class="table-responsive">
-              <table id="tblResult" class="table table-striped table-hover table-bordered">
-                <thead>
-                  <tr>
-                    <th class="text-center">
-                      Id
-                    </th>
-                    <th class="text-center">
-                      Marca de motor
-                    </th>
-                    <th class="text-center">
-                      Eliminar
-                    </th>
-                    <th class="text-center">
-                      Editar
-                    </th>
-                  </tr>
-                </thead>
-                <tbody id="tbodyResult">
-
-                </tbody>
-
-              </table>
-            </div>
-
+            <center>
+              <button id="btnGuardar" style="cursor:pointer; cursor: hand" type="submit" class="btn btn-success">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                <span class="glyphicons glyphicons-floppy-disk"></span>
+                Guardar
+              </button>
+            </center>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <hr>
-  <center>&copy 2017 - Todos los derechos reservados</center>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="js/jquery-1.12.4.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- JS para editar o eliminar registro -->
-  <script src="js/funciones.js"></script>
+    <div class="container" style="height:100%">
+      <div class="container-fluid">
+        <div class="elementos hidden" id="dvEditar">
+          <center><h1>Página principal del registro de facturas</h1></center>
+          <div class="card">
+            <div class="card-body">
+              <div role="form" name="signup_form2" novalidate >
+                  <div class="form-group">
+                      <label>Número de cliente</label>
+                      <input type="text" placeholder="Número de cliente" class="form-control" name="txtNumCE" id="txtNumCE" >
+                      <input type="text" class="hidden" id="txtIdE">
+                  </div>
+
+                  <div class="formgroup">
+                    <label>Nombre de cliente:</label>
+                    <input id="txtNomCE" name="txtNomC" type="text" class="form-control" placeholder="Nombre de cliente" required>
+                  </div>
+
+                  <br>
+
+                  <div class="formgroup">
+                    <label>Factura:</label>
+                    <input id="txtFacturaE" name="txtFactura" type="text" class="form-control ancho" placeholder="Factura" required>
+                  </div>
+
+                  <br>
+
+                  <div class="formgroup">
+                    <label>Importe:</label>
+                    <input id="txtImporteE" name="txtImporte" type="text" class="form-control ancho" placeholder="Importe" required>
+                  </div>
+
+                  <br>
+
+                  <div class="formgroup">
+                    <label>Importe total:</label>
+                    <input id="txtImporteTE" name="txtImporteT" type="text" class="form-control ancho" placeholder="Importe total" required>
+                  </div>
+
+                  <br>
+
+                  <div class="formgroup">
+                    <label>Fecha de Pago:</label>
+                    <div class='input-group date' id='datetimepicker1'>
+                      <span class="input-group-addon">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                      </span>
+                      <input id="txtFechaPE" name="txtFechaP" type="text" class="form-control ancho" placeholder="aaaa/mm/dd" required>
+                    </div>
+                  </div>
+
+                  <br>
+
+                  <div class="form-group">
+                      <button class="btn btn-sm btn-primary" type="submit" id="btnGuardarE" style="cursor:pointer; cursor: hand"><strong>
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        Guardar</strong>
+                      </button>
+                      <button class="btn btn-sm btn-danger" type="submit" id="btnCancelarE" style="cursor:pointer; cursor: hand"><strong>
+                          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          Cancelar</strong>
+                      </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="elementos" id="dvListado">
+          <div class="card">
+            <div class="card-header">
+              <button id="btnCrearPdf" name="btnCrearPdf" onclick="crearPdf();" type="submit" class="btn btn-success">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Generar Reportes
+              </button>
+            </div>
+            <br>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="tblResult" class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="text-center">
+                        Número de cliente
+                      </th>
+                      <th class="text-center">
+                        Cliente
+                      </th>
+                      <th class="text-center">
+                        Factura
+                      </th>
+                      <th class="text-center">
+                        Importe
+                      </th>
+                      <th class="text-center">
+                      Importe total
+                      </th>
+                      <th class="text-center">
+                        Fecha de pago
+                      </th>
+                      <th class="text-center">
+                        Eliminar
+                      </th>
+                      <th class="text-center">
+                        Editar
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyResult">
+
+                  </tbody>
+
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php
+      include 'plantilla/footer.php';
+    ?>
 </body>
 </html>

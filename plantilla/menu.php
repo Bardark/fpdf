@@ -11,8 +11,8 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">Facturas</a></li>
-        <li><a href="agregar.php">Agregar</a></li>
+        <li><a style="cursor:pointer; cursor: hand" onclick="index();">Facturas</a></li>
+        <li><a style="cursor:pointer; cursor: hand" onclick="agregar();">Agregar</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

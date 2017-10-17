@@ -5,7 +5,7 @@
   class ConsultaGetFactura{
 
     function getConsultaFacturas($consultaSql){
-      include('../Consultas.php');
+      include('Consultas.php');
           $Consultas = new Consultas;
 
             $Consultas -> establecerConexion();
@@ -25,16 +25,22 @@
                  if( $result->num_rows > 0 ) {
 
                    while($row = mysqli_fetch_array($result, MYSQL_BOTH)) {
-                     $motId    = $row['idFac'];
-                     $motMarca = $row['nomCliente'];
-                     $motMarca = $row['nomFac'];
-                     $motMarca = $row['importeSinIva'];
-                     $motMarca = $row['importeTotal'];
-                     $motMarca = $row['fechaPago'];
+                     $idFac = $row['idFac'];
+                     $numCliente = $row['numCliente'];
+                     $cliente = $row['nomCliente'];
+                     $factura = $row['nomFac'];
+                     $importe = $row['importeSinIVA'];
+                     $importeT = $row['importeTotal'];
+                     $fechaP = $row['fechaPago'];
 
                      $data[]= array(
-                                    'motId'    => $motId,
-                                    'motMarca' => $motMarca,
+                                    'idFac' => $idFac,
+                                    'numCliente' => $numCliente,
+                                    'nomCliente' => $cliente,
+                                    'nomFac' => $factura,
+                                    'importeSinIVA' => $importe,
+                                    'importeTotal' => $importeT,
+                                    'fechaPago' => $fechaP,
                                   );
                    }
                    mysqli_free_result($result);

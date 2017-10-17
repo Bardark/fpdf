@@ -1,19 +1,20 @@
 <?php
-$id  =($_POST['idFactura']);
+$id  =($_POST['idFac']);
 if (isset( $id )) {
   include('ConsultaGetFactura.php');
   $ConsultaGetFactura = new ConsultaGetFactura;
 
   $consultaSelect = 'SELECT '.
-                     'r.id, '.
-                     'r.cliente, '
-                     'r.factura, '
-                     'r.importe, '
-                     'r.importeT, '
-                     'r.fechaP ';
+                     'idFac, '.
+                     'numCliente, '.
+                     'nomCliente, '.
+                     'nomFac, '.
+                     'importeSinIVA, '.
+                     'importeTotal, '.
+                     'fechaPago ';
 
-  $consultaFrom  = ' FROM registro r ';
-  $consultaWhere = ' WHERE r.idFac = '.$id;
+  $consultaFrom  = ' FROM registro ';
+  $consultaWhere = ' WHERE idFac = '.$id;
 
   $consulta = $consultaSelect.$consultaFrom.$consultaWhere;
   $response = $ConsultaGetFactura -> getConsultaFacturas($consulta);

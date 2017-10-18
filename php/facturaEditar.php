@@ -1,6 +1,6 @@
 <?php
 
-$idFac    =($_POST['idFac']);
+$id    =($_POST['idFac']);
 $numCliente =($_POST['numCliente']);
 $nomCliente =($_POST['nomCliente']);
 $nomFac =($_POST['nomFac']);
@@ -17,10 +17,10 @@ if ((isset( $idFac )) || (isset($numCliente)) || (isset( $nomCliente )) || (isse
    $conexion = $Consultas -> establecerConexion();
 
      if ($conexion) {
-             $sqlUpdate = 'UPDATE registro SET numCliente = "'.$numCliente.'", nomCliente = "'.$nomCliente.'",
-             nomFac = "'.$nomFac.'", importeSinIVA = "'.$importe.'", importeTotal = "'.$importeT.'",
-             fechaPago = "'.$fechaP.'" WHERE idFac = '.$idFac;
-             $response = $Consultas -> consultaInsertEditEliminar($sqlUpdate);
+             $query = "UPDATE registro SET numCliente = '$numCliente', nomCliente = '$nomCliente', nomFac = '$nomFac', importeSinIVA = '$importe',
+             importeTotal = '$importeT', fechaPago = '$fechaP' WHERE idFac='$id'";
+             //$result = mysql_query($query);
+             $response = $Consultas -> consultaInsertEditEliminar($query);
 
      }
      else {

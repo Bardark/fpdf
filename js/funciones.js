@@ -1,7 +1,7 @@
 $(function () {
   var bindDatePicker = function() {
    $(".date").datetimepicker({
-       format:'YYYY-MM-DD',
+       format:'DD-MM-YYYY',
      icons: {
        time: "fa fa-clock-o",
        date: "fa fa-calendar",
@@ -15,7 +15,7 @@ $(function () {
 
      if (! isValidDate(date)) {
        //create date based on momentjs (we have that)
-       date = moment().format('YYYY-MM-DD');
+       date = moment().format('DD-MM-YYYY');
      }
 
      $(this).val(date);

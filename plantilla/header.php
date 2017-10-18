@@ -15,7 +15,8 @@
     <link type="text/css" rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet" href="font-awesome/css/font-awesome.css"/>
 
-    <!-- SWET ALERT -->
+    <!-- SWEET ALERT -->
+    <link type="text/css" rel="stylesheet" href="css/sweetalert/sweetalert.css"/>
     <script src="js/sweetalert.min.js"></script>
 
     <!--  Datepicker-->

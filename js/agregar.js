@@ -165,7 +165,7 @@ function validarIngreso(){
   return true;
 }
 
-function confirmarEliminar(){
+/*function confirmarEliminar(){
   var id = $(this).attr('id');
   swal({
     title: "Eliminar Factura",
@@ -178,13 +178,14 @@ function confirmarEliminar(){
     closeOnConfirm: false
   },
   function(){
-    eliminarMotor(id);
+    eliminarFactura(id);
   });
-}
+}*/
 
-function eliminarMotor(idFac) {
+function eliminarFactura(idFac) {
+  var id = $(this).attr('id');
   var datos = $.ajax({
-  url: '../php/admin/motorEliminar.php',
+  url: 'php/facturaEliminar.php',
   data:{
      idFac:  idFac
   },
@@ -196,19 +197,19 @@ function eliminarMotor(idFac) {
   .done( function(res){
     if ( res.status === 'OK' ){
       swal({
-        title: "Marca de motor eliminado correctamente.",
+        title: "Factura eliminada correctamente.",
         text: "",
         timer: 2000,
         type: "success",
         showConfirmButton: true
       });
-      getMotores();
+      getFacturas();
 
       }
       else{
         mensaje = res.message;
         swal({
-          title: "Error al eliminar marca de motor.",
+          title: "Error al eliminar factura.",
           text: mensaje,
           type: "error",
           showConfirmButton: true
@@ -222,6 +223,11 @@ function eliminarMotor(idFac) {
 }
 
 function limiparCampos(){
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
   txtMarcaMotor.val('');
 }
 
@@ -255,7 +261,13 @@ function visualizarEdicion(){
         });
     }
     else{
-      txtMarcaMotorE.val(res.message);
+      txtNumC.val(res.message);
+      txtIdE.val(res.message);
+      txtNomCE.val(res.message);
+      txtFacturaE.val(res.message);
+      txtImporteE.val(res.message);
+      txtImporteTE.val(res.message);
+      txtFechaPE.val(res.message);
     }
   });
 }
@@ -287,7 +299,7 @@ function editarFactura() {
         showConfirmButton: true
       });
       cancelarEdicion();
-      getMotores();
+      getFacturas();
 
       }
       else{
@@ -316,7 +328,7 @@ function cancelarEdicion(){
 
 
 btnGuardar.on('click',agregarFactura);
-tbodyResult.delegate('.fa-trash', 'click', confirmarEliminar);
+tbodyResult.delegate('.fa-trash', 'click', eliminarFactura);
 tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
 btnCancelarE.on('click',cancelarEdicion);
 btnGuardarE.on('click',editarFactura);

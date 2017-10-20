@@ -187,7 +187,7 @@ function eliminarFactura(idFac) {
   var datos = $.ajax({
   url: 'php/facturaEliminar.php',
   data:{
-     idFac:  idFac
+     idFac:  id
   },
   type: 'post',
       dataType:'json',

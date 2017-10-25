@@ -9,7 +9,8 @@ var btnGuardar=$('#btnGuardar'),
 
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
-    dvListado=$('#dvListado');
+    dvListado=$('#dvListado'),
+    dvPago=$('#dvPago');
 
 var txtNumCE=$('#txtNumCE'),
     txtNomCE=$('#txtNomCE'),
@@ -20,6 +21,29 @@ var txtNumCE=$('#txtNumCE'),
     btnGuardarE=$('#btnGuardarE'),
     btnCancelarE=$('#btnCancelarE'),
     txtIdE=$('#txtIdE');
+
+var txtNumCP=$('#txtNumCP'),
+    txtIdP=$('#txtIdP'),
+    txtNomCP=$('#txtNomCP'),
+    txtFacturaP=$('#txtFacturaP'),
+    txtImporteP=$('#txtImporteP'),
+    txtImporteTP=$('#txtImporteTP'),
+    txtFechaPP=$('#txtFechaPP'),
+    txtEstado=$('#txtEstado');
+
+function index() {
+  dvAgregar.addClass('hidden');
+  dvListado.removeClass('hidden');
+  dvEditar.addClass('hidden');
+  dvPago.addClass('hidden');
+}
+
+function agregar() {
+  dvAgregar.removeClass('hidden');
+  dvListado.addClass('hidden');
+  dvEditar.addClass('hidden');
+  dvPago.addClass('hidden');
+}
 
 function crearPdf() {
   window.location.href = "pdf.php";
@@ -105,6 +129,9 @@ function getFacturas(){
                 '</td>'+
                 '<td class="text-center">'+
                   '<i class="fa fa-pencil-square text-primary" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
+                '</td>'+
+                '<td class="text-center">'+
+                  '<i class="fa fa-usd text-success" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
                 '</td>'+
               '</tr>'
           );
@@ -223,12 +250,12 @@ function eliminarFactura(idFac) {
 }
 
 function limiparCampos(){
-  txtMarcaMotor.val('');
-  txtMarcaMotor.val('');
-  txtMarcaMotor.val('');
-  txtMarcaMotor.val('');
-  txtMarcaMotor.val('');
-  txtMarcaMotor.val('');
+  txtNumC.val('');
+  txtNomC.val('');
+  txtFactura.val('');
+  txtImporte.val('');
+  txtImporteT.val('');
+  txtFechaP.val('');
 }
 
 function visualizarEdicion(){
@@ -326,9 +353,84 @@ function cancelarEdicion(){
   dvEditar.addClass('hidden');
 }
 
+function visualizarFactura(){
+  dvAgregar.addClass('hidden');
+  dvListado.addClass('hidden');
+  dvEditar.addClass('hidden');
+  dvPago.removeClass('hidden');
+
+  var id = $(this).attr('id');
+
+  var datos = $.ajax({
+  url: 'php/marcar/getMarcar.php',
+  data:{
+     idFacP:  id
+  },
+  type: 'post',
+      dataType:'json',
+      async:false
+  })
+
+  .done(function(res){
+    if ( res.status === 'OK' ){
+        $.each(res.data, function(k,o){
+          txtNumCP.val(o.numCliente);
+          txtIdP.val(o.idFac);
+          txtNomCP.val(o.nomCliente);
+          txtFacturaP.val(o.nomFac);
+          txtImporteP.val(o.importeSinIVA);
+          txtImporteTP.val(o.importeTotal);
+          txtFechaPP.val(o.fechaPago);
+        });
+    }
+    else{
+      txtNumC.val(res.message);
+      txtIdE.val(res.message);
+      txtNomCE.val(res.message);
+      txtFacturaE.val(res.message);
+      txtImporteE.val(res.message);
+      txtImporteTE.val(res.message);
+      txtFechaPE.val(res.message);
+    }
+  });
+  getEstado();
+}
+
+function getEstado(){
+
+  $.ajax({
+    url: 'php/marcar/estadoGet.php',
+    type: 'post',
+    dataType:'json',
+    async:false
+    })
+
+    .done(function( response ) {
+      txtEstado.html('');
+      txtEstado.append(
+        '<option value=0> Seleccione una marca de motor </option>'
+      );
+      if ( response.status === 'OK' ){
+        $.each(response.data, function(k,o){
+          txtEstado.append(
+            '<option value='+o.idEstado+'>'+o.estadoFac+'</option>'
+          );
+        });
+      }else{
+        txtEstado.html('');
+        txtEstado.html('<option value=0>'+ response.message +'</option>');
+      }
+    })
+
+    .fail(function( jqXHR, textStatus, errorThrown ){
+        alert('Ocurrio un error, intente de nuevo '+textStatus);
+    });
+
+}
 
 btnGuardar.on('click',agregarFactura);
 tbodyResult.delegate('.fa-trash', 'click', eliminarFactura);
 tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
+tbodyResult.delegate('.fa-usd', 'click', visualizarFactura);
 btnCancelarE.on('click',cancelarEdicion);
 btnGuardarE.on('click',editarFactura);

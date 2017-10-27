@@ -1,7 +1,7 @@
 <div class="container" style="height:100%">
   <div class="container-fluid">
     <div class="elementos hidden" id="dvPago">
-      <center><h1>Página para editar facturas</h1></center>
+      <center><h1>Página para marcar facturas</h1></center>
       <div class="card">
         <div class="card-body">
           <div role="form" name="signup_form2" novalidate >
@@ -12,40 +12,40 @@
 
             <div class="form-group">
                 <label>Número de cliente</label>
-                <input id="txtNumCP" name="txtNumCP" type="text" style="border:none" placeholder="Número de cliente" readonly>
+                <input id="txtNumCP" name="txtNumCP" class="caja" type="text" style="border:none" placeholder="Número de cliente" readonly>
             </div>
 
             <div class="formgroup">
               <label>Nombre de cliente:</label>
-              <input id="txtNomCP" name="txtNomCP" type="text" style="border:none" placeholder="Nombre de cliente" readonly>
+              <input id="txtNomCP" name="txtNomCP" class="caja" type="text" style="border:none" placeholder="Nombre de cliente" readonly>
             </div>
 
             <br>
 
             <div class="formgroup">
               <label>Factura:</label>
-              <input id="txtFacturaP" name="txtFacturaP" type="text" style="border:none" placeholder="Factura" readonly>
+              <input id="txtFacturaP" name="txtFacturaP" class="caja" type="text" style="border:none" placeholder="Factura" readonly>
             </div>
 
             <br>
 
             <div class="formgroup">
               <label>Importe:</label>
-              <input id="txtImporteP" name="txtImporteP" type="text" style="border:none" placeholder="Importe" readonly>
+              <input id="txtImporteP" name="txtImporteP" class="caja" type="text" style="border:none" placeholder="Importe" readonly>
             </div>
 
             <br>
 
             <div class="formgroup">
               <label>Importe total:</label>
-              <input id="txtImporteTP" name="txtImporteTP" type="text" style="border:none" placeholder="Importe total" readonly>
+              <input id="txtImporteTP" name="txtImporteTP" class="caja" type="text" style="border:none" placeholder="Importe total" readonly>
             </div>
 
             <br>
 
             <div class="formgroup">
               <label>Fecha de Pago:</label>
-              <input id="txtFechaPP" name="txtFechaPP" type="text" style="border:none" placeholder="aaaa/mm/dd" readonly>
+              <input id="txtFechaPP" name="txtFechaPP" class="caja" type="text" style="border:none" placeholder="aaaa/mm/dd" readonly>
             </div>
 
             <br>
@@ -53,7 +53,7 @@
             <div class="form-group">
               <label for="slctNombreRev" class="control-label"> Marcar factura como:</label>
               <div class="">
-                <select name="" id="txtEstado" class="form-control input-sm">
+                <select id="txtEstado" class="form-control input-sm">
                 </select>
               </div>
             </div>

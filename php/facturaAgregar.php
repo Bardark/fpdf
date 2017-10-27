@@ -6,8 +6,9 @@ $factura   =($_POST['Factura']);
 $importe   =($_POST['Importe']);
 $importeT   =($_POST['ImporteT']);
 $fechaP   =($_POST['FechaP']);
+$estado   =($_POST['Estado']);
 
-if (isset( $numC, $nomC, $factura, $importe, $importeT, $fechaP )) {
+if (isset( $numC, $nomC, $factura, $importe, $importeT, $fechaP, $estado )) {
 
    include('Consultas.php');
 
@@ -22,8 +23,8 @@ if (isset( $numC, $nomC, $factura, $importe, $importeT, $fechaP )) {
        $nExistente = $Consultas -> contarExistentes($consultaExistente);                                     //si existe un RFC igual dentro del sistema
 
        if ($nExistente == 0) {
-             $sqlInsert = 'INSERT INTO registro (numCliente, nomCliente, nomFac, importeSinIVA, importeTotal, fechaPago) values (';
-             $sqlValues = '"'.$numC.'", "'.$nomC.'", "'.$factura.'", "'.$importe.'", "'.$importeT.'", "'.$fechaP.'");';
+             $sqlInsert = 'INSERT INTO registro (numCliente, nomCliente, nomFac, importeSinIVA, importeTotal, fechaPago, estado) values (';
+             $sqlValues = '"'.$numC.'", "'.$nomC.'", "'.$factura.'", "'.$importe.'", "'.$importeT.'", "'.$fechaP.'", "'.$estado.'");';
              $consulta = $sqlInsert.$sqlValues;
              $response = $Consultas -> consultaInsertEditEliminar($consulta);
            }

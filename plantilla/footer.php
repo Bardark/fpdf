@@ -6,6 +6,7 @@
 <script src="js/bootstrap.min.js"></script>
 <!-- JS para editar o eliminar registro -->
 <script src="js/agregar.js"></script>
+<script src="js/marcar.js"></script>
 <!-- Funciones propias y el Datepicker -->
 <script src="js/funciones.js"></script>
 <!-- SWEET alert -->

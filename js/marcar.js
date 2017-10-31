@@ -5,8 +5,7 @@ var txtNumCP=$('#txtNumCP'),
     txtImporteP=$('#txtImporteP'),
     txtImporteTP=$('#txtImporteTP'),
     txtFechaPP=$('#txtFechaPP'),
-    txtMarcar=$('#txtMarcar'),
-    txtIdM=$('#txtIdM');
+    txtMarcar=$('#txtMarcar');
 
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
@@ -75,8 +74,7 @@ function getEstado(){
       if ( response.status === 'OK' ){
         $.each(response.data, function(k,o){
           txtMarcar.append(
-            '<option value='+o.idEstado+'>'+o.estadoFac+'</option>'+
-            '<input type="text" class="" value="'+o.idEstado+'">'
+            '<option value='+o.idEstado+'>'+o.estadoFac+'</option>'
           );
         });
       }else{

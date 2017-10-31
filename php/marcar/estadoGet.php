@@ -1,16 +1,16 @@
 <?php
-include('ConsultaGetEstado.php');
-$ConsultaGetMotor = new ConsultaGetEstado;
+  include('ConsultaGetEstado.php');
+  $ConsultaGetMotor = new ConsultaGetEstado;
 
-$consultaSelect = 'SELECT '.
-                   'idEstado, '.
-                   'estadoFac ';
+  $consultaSelect = 'SELECT '.
+                     'idEstado, '.
+                     'estadoFac ';
 
-$consultaFrom = ' FROM estado';
-$consulta = $consultaSelect.$consultaFrom;
-$response = $ConsultaGetMotor -> getConsultaEstados($consulta);
+  $consultaFrom = ' FROM estado';
 
-$jsonFinal = json_encode($response);
-echo $jsonFinal;
+  $consulta = $consultaSelect.$consultaFrom;
+  $response = $ConsultaGetMotor -> getConsultaEstados($consulta);
 
+  $jsonFinal = json_encode($response);
+  echo $jsonFinal;
 ?>

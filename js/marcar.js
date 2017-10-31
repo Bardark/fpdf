@@ -5,8 +5,7 @@ var txtNumCP=$('#txtNumCP'),
     txtImporteP=$('#txtImporteP'),
     txtImporteTP=$('#txtImporteTP'),
     txtFechaPP=$('#txtFechaPP'),
-    txtEstado=$('#txtEstado'),
-    tbodyResult=$('#tbodyResult');
+    txtEstado=$('#txtEstado');
 
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),

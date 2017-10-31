@@ -29,7 +29,7 @@
                      $estadoFac = $row['estadoFac'];
 
                      $data[]= array(
-                                    'idEstado'    => $idEstado,
+                                    'idEstado'  => $idEstado,
                                     'estadoFac' => $estadoFac,
                                   );
                    }

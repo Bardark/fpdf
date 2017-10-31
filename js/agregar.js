@@ -11,7 +11,8 @@ var btnGuardar=$('#btnGuardar'),
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
     dvListado=$('#dvListado'),
-    dvPago=$('#dvPago');
+    dvPago=$('#dvPago'),
+    txtEstado=$('#txtEstado');
 
 var txtNumCE=$('#txtNumCE'),
     txtNomCE=$('#txtNomCE'),

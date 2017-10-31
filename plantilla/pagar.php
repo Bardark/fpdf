@@ -53,7 +53,7 @@
             <div class="form-group">
               <label for="slctNombreRev" class="control-label"> Marcar factura como:</label>
               <div class="">
-                <select id="txtEstado" class="form-control input-sm">
+                <select id="txtEstado" name="txtEstado" class="form-control input-sm">
                 </select>
               </div>
             </div>

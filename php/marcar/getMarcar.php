@@ -1,8 +1,8 @@
 <?php
 $id  =($_POST['idFacP']);
 if (isset( $id )) {
-  include('ConsultaGetMarcar.php');
-  $ConsultaGetFactura = new ConsultaGetMarcar;
+  include('ConsultaGetFactura.php');
+  $ConsultaGetFactura = new ConsultaGetFactura;
 
   $consultaSelect = 'SELECT '.
                      'idFac, '.
@@ -17,7 +17,7 @@ if (isset( $id )) {
   $consultaWhere = ' WHERE idFac = '.$id;
 
   $consulta = $consultaSelect.$consultaFrom.$consultaWhere;
-  $response = $ConsultaGetFactura -> getConsultaMarcar($consulta);
+  $response = $ConsultaGetFactura -> getConsultaFacturas($consulta);
 
 }
 else {

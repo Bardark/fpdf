@@ -2,9 +2,9 @@
   /**
    * Clase para regresar elementos de consulta para traer informacion de la tabla motores
    */
-  class ConsultaGetMarcar{
+  class ConsultaGetFactura{
 
-    function getConsultaMarcar($consultaSql){
+    function getConsultaFacturas($consultaSql){
       include('../Consultas.php');
           $Consultas = new Consultas;
 

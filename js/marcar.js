@@ -5,7 +5,8 @@ var txtNumCP=$('#txtNumCP'),
     txtImporteP=$('#txtImporteP'),
     txtImporteTP=$('#txtImporteTP'),
     txtFechaPP=$('#txtFechaPP'),
-    txtEstado=$('#txtEstado');
+    txtMarcar=$('#txtMarcar'),
+    txtIdM=$('#txtIdM');
 
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
@@ -67,19 +68,20 @@ function getEstado(){
     })
 
     .done(function( response ) {
-      txtEstado.html('');
-      txtEstado.append(
+      txtMarcar.html('');
+      txtMarcar.append(
         '<option value=0> Seleccione estado de factura </option>'
       );
       if ( response.status === 'OK' ){
         $.each(response.data, function(k,o){
-          txtEstado.append(
-            '<option value='+o.idEstado+'>'+o.estadoFac+'</option>'
+          txtMarcar.append(
+            '<option value='+o.idEstado+'>'+o.estadoFac+'</option>'+
+            '<input type="text" class="" value="'+o.idEstado+'">'
           );
         });
       }else{
-        txtEstado.html('');
-        txtEstado.html('<option value=0>'+ response.message +'</option>');
+        txtMarcar.html('');
+        txtMarcar.html('<option value=0>'+ response.message +'</option>');
       }
     })
 

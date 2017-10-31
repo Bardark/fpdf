@@ -244,12 +244,12 @@ function eliminarFactura(idFac) {
 }
 
 function limiparCampos(){
-  txtNumC.val('');
-  txtNomC.val('');
-  txtFactura.val('');
-  txtImporte.val('');
-  txtImporteT.val('');
-  txtFechaP.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
+  txtMarcaMotor.val('');
 }
 
 function visualizarEdicion(){

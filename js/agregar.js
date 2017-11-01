@@ -92,8 +92,6 @@ function agregarFactura(){
   .fail(function( jqXHR, textStatus, errorThrown ){
       alert('Ocurrio un error, intente de nuevo '+textStatus);
   });
-
-
 }
 
 function getFacturas(){
@@ -325,7 +323,7 @@ function editarFactura() {
       else{
         mensaje = res.message;
         swal({
-          title: "Error al editar marca de motor.",
+          title: "Error al editar factura.",
           text: mensaje,
           type: "error",
           showConfirmButton: true
@@ -337,13 +335,13 @@ function editarFactura() {
     .fail(function( jqXHR, textStatus, errorThrown ){
         alert('Ocurrio un error, intente de nuevo '+textStatus);
     });
-
 }
 
 function cancelarEdicion(){
   dvAgregar.addClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
+  dvPago.addClass('hidden');
 }
 
 btnGuardar.on('click',agregarFactura);

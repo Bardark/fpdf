@@ -5,14 +5,16 @@ var txtNumCP=$('#txtNumCP'),
     txtImporteP=$('#txtImporteP'),
     txtImporteTP=$('#txtImporteTP'),
     txtFechaPP=$('#txtFechaPP'),
-    txtMarcar=$('#txtMarcar');
+    txtMarcar=$('#txtMarcar'),
+    txtEstadoP=$('#txtEstadoP');
 
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
     dvListado=$('#dvListado'),
     dvPago=$('#dvPago');
 
-//var btnGuardarM=$('#btnGuardarM');
+var btnGuardarM=$('#btnGuardarM'),
+    btnCancelarM=$('#btnCancelarM');
 
 function visualizarFactura(){
   dvAgregar.addClass('hidden');
@@ -86,8 +88,63 @@ function getEstado(){
     .fail(function( jqXHR, textStatus, errorThrown ){
         alert('Ocurrio un error, intente de nuevo '+textStatus);
     });
+}
 
+function Marcar(){
+  var datos = $.ajax({
+  url: 'php/marcar/facturaMarcar.php',
+  data:{
+     idFacM:     txtIdE.val(),
+     idEstado : txtEstadoP.val()
+  },
+  type: 'post',
+      dataType:'json',
+      async:false
+  })
+
+  .done(function(res){
+    if ( res.status === 'OK' ){
+      swal({
+        title: "Factura marcada correctamente.",
+        text: "",
+        timer: 2000,
+        type: "success",
+        showConfirmButton: true
+      });
+      cancelarEdicion();
+      getFacturas();
+
+      }
+      else{
+        mensaje = res.message;
+        swal({
+          title: "Error al amrcar la factura.",
+          text: mensaje,
+          type: "error",
+          showConfirmButton: true
+        });
+      }
+
+    })
+
+    .fail(function( jqXHR, textStatus, errorThrown ){
+        alert('Ocurrio un error, intente de nuevo '+textStatus);
+    });
+}
+
+function Cancelar(){
+  dvAgregar.addClass('hidden');
+  dvListado.removeClass('hidden');
+  dvEditar.addClass('hidden');
+  dvPago.addClass('hidden');
 }
 
 tbodyResult.delegate('.fa-usd', 'click', visualizarFactura);
-//btnGuardarM.on('click',marcar);
+btnGuardarM.on('click',Marcar);
+btnCancelarM.on('ckick',Cancelar);
+
+//Con esto obtenenmos el value del select y se guarda en un input para poder manejarlo en php
+$('select#txtMarcar').on('change',function(){
+    var valor = $(this).val();
+    document.getElementById("txtEstadoP").value = valor;
+});

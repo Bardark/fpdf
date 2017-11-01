@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-body">
           <div role="form" name="signup_form2" novalidate >
-            <div class="form-group ">
+            <div class="form-group hidden">
                 <label>ID</label>
                 <input type="text" class="" id="txtIdP">
             </div>
@@ -53,9 +53,16 @@
             <div class="form-group">
               <label for="slctNombreRev" class="control-label"> Marcar factura como:</label>
               <div class="">
-                <select name="" id="txtMarcar" class="form-control input-sm">
+                <select name="txtMarcar" id="txtMarcar" class="form-control input-sm">
                 </select>
               </div>
+            </div>
+
+            <br>
+
+            <div class="formgroup hidden">
+              <label>Estado:</label>
+              <input id="txtEstadoP" name="txtEstadoP" class="caja" type="text" style="border:none">
             </div>
 
             <br>

@@ -1,9 +1,9 @@
 <?php
 
-$id    =($_POST['idFacM']);
+$id  =($_POST['idFacM']);
 $idE =($_POST['idEstado']);
 
-if ((isset( $idFac )) || (isset($idE))) {
+if ((isset( $id )) || (isset($idE))) {
 
    include('../Consultas.php');
 
@@ -12,8 +12,9 @@ if ((isset( $idFac )) || (isset($idE))) {
    $conexion = $Consultas -> establecerConexion();
 
      if ($conexion) {
-         $sqlUpdate = 'UPDATE regiatro SET estado = "'.$idE.'" WHERE idFac = '.$id;
-         $response = $Consultas -> consultaInsertEditEliminar($sqlUpdate);
+       $query = "UPDATE registro SET estado = '$idE' WHERE idFac='$id'";
+       //$result = mysql_query($query);
+       $response = $Consultas -> consultaInsertEditEliminar($query);
 
      }
      else {

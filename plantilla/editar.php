@@ -75,7 +75,7 @@
         <div class="card-header">
           <button id="btnCrearPdf" name="btnCrearPdf" onclick="crearPdf();" type="submit" class="btn btn-success">
             <i class="fa fa-floppy-o" aria-hidden="true"></i>
-            Generar Reportes
+            Reporte general
           </button>
         </div>
         <br>
@@ -85,7 +85,7 @@
               <thead>
                 <tr>
                   <th class="text-center">
-                    Número de cliente
+                    Número
                   </th>
                   <th class="text-center">
                     Cliente
@@ -94,13 +94,13 @@
                     Factura
                   </th>
                   <th class="text-center">
-                    Importe
+                    Importe<br>sin IVA
                   </th>
                   <th class="text-center">
-                  Importe total
+                  Importe<br>total
                   </th>
                   <th class="text-center">
-                    Fecha de pago
+                    Fecha<br>de pago
                   </th>
                   <th class="text-center">
                     Eliminar
@@ -109,7 +109,7 @@
                     Editar
                   </th>
                   <th class="text-center">
-                    Marcar
+                    Actualizar <br> estado
                   </th>
                 </tr>
               </thead>

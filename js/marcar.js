@@ -94,7 +94,7 @@ function Marcar(){
   var datos = $.ajax({
   url: 'php/marcar/facturaMarcar.php',
   data:{
-     idFacM:     txtIdE.val(),
+     idFacM: txtIdE.val(),
      idEstado : txtEstadoP.val()
   },
   type: 'post',
@@ -111,8 +111,7 @@ function Marcar(){
         type: "success",
         showConfirmButton: true
       });
-      cancelarEdicion();
-      getFacturas();
+      //getFacturas();
 
       }
       else{
@@ -132,16 +131,16 @@ function Marcar(){
     });
 }
 
-function Cancelar(){
+function cancelarM(){
   dvAgregar.addClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
   dvPago.addClass('hidden');
 }
 
-tbodyResult.delegate('.fa-usd', 'click', visualizarFactura);
+tbodyResult.delegate('.fa-pencil-square-o', 'click', visualizarFactura);
 btnGuardarM.on('click',Marcar);
-btnCancelarM.on('ckick',Cancelar);
+btnCancelarM.on('ckick',cancelarM);
 
 //Con esto obtenenmos el value del select y se guarda en un input para poder manejarlo en php
 $('select#txtMarcar').on('change',function(){

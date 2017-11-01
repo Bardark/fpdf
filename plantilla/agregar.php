@@ -50,7 +50,7 @@
 
       <br>
 
-      <div class="formgroup">
+      <div class="formgroup hidden">
         <label>Estado:</label>
         <input id="txtEstado" name="txtEstado" type="text" class="form-control ancho" value="2">
       </div>

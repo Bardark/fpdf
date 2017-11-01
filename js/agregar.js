@@ -116,13 +116,13 @@ function getFacturas(){
                 '<td class="text-center">$'+o.importeTotal+'</td>'+
                 '<td class="text-center">'+o.fechaPago+'</td>'+
                 '<td class="text-center">'+
-                  '<i class="fa fa-trash text-danger" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
+                  '<i class="fa fa-trash text-danger fa-lg" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
                 '</td>'+
                 '<td class="text-center">'+
-                  '<i class="fa fa-pencil-square text-primary" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
+                  '<i class="fa fa-pencil text-primary fa-lg" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
                 '</td>'+
                 '<td class="text-center">'+
-                  '<i class="fa fa-usd text-success" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
+                  '<i class="fa fa-pencil-square-o text-success fa-lg" aria-hidden="true" id="'+o.idFac+'" style="cursor:pointer"  ></i>'+
                 '</td>'+
               '</tr>'
           );

@@ -1,7 +1,7 @@
 <div class="container" style="height:100%">
   <div class="container-fluid">
     <div class="elementos hidden" id="dvPago">
-      <center><h1>Página para marcar facturas</h1></center>
+      <center><h1>Página para cambiar el estadode las facturas</h1></center>
       <div class="card">
         <div class="card-body">
           <div role="form" name="signup_form2" novalidate >

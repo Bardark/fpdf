@@ -11,16 +11,30 @@ var txtNumCP=$('#txtNumCP'),
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
     dvListado=$('#dvListado'),
-    dvPago=$('#dvPago');
+    dvMarcar=$('#dvMarcar');
 
 var btnGuardarM=$('#btnGuardarM'),
     btnCancelarM=$('#btnCancelarM');
+
+function index() {
+  dvAgregar.addClass('hidden');
+  dvListado.removeClass('hidden');
+  dvEditar.addClass('hidden');
+  dvMarcar.addClass('hidden');
+}
+
+function agregar() {
+  dvAgregar.removeClass('hidden');
+  dvListado.addClass('hidden');
+  dvEditar.addClass('hidden');
+  dvMarcar.addClass('hidden');
+}
 
 function visualizarFactura(){
   dvAgregar.addClass('hidden');
   dvListado.addClass('hidden');
   dvEditar.addClass('hidden');
-  dvPago.removeClass('hidden');
+  dvMarcar.removeClass('hidden');
 
   var id = $(this).attr('id');
 
@@ -135,7 +149,7 @@ function cancelarM(){
   dvAgregar.addClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
-  dvPago.addClass('hidden');
+  dvMarcar.addClass('hidden');
 }
 
 tbodyResult.delegate('.fa-pencil-square-o', 'click', visualizarFactura);

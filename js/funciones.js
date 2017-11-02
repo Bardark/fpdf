@@ -44,15 +44,3 @@ $(function () {
 
   bindDatePicker();
 });
-
-function index() {
-  dvAgregar.addClass('hidden');
-  dvListado.removeClass('hidden');
-  dvEditar.addClass('hidden');
-}
-
-function agregar() {
-  dvAgregar.removeClass('hidden');
-  dvListado.addClass('hidden');
-  dvEditar.addClass('hidden');
-}

@@ -11,7 +11,7 @@ var btnGuardar=$('#btnGuardar'),
 var dvAgregar=$('#dvAgregar'),
     dvEditar=$('#dvEditar'),
     dvListado=$('#dvListado'),
-    dvPago=$('#dvPago');
+    dvMarcar=$('#dvMarcar');
 
 var txtNumCE=$('#txtNumCE'),
     txtNomCE=$('#txtNomCE'),
@@ -27,14 +27,14 @@ function index() {
   dvAgregar.addClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
-  dvPago.addClass('hidden');
+  dvMarcar.addClass('hidden');
 }
 
 function agregar() {
   dvAgregar.removeClass('hidden');
   dvListado.addClass('hidden');
   dvEditar.addClass('hidden');
-  dvPago.addClass('hidden');
+  dvMarcar.addClass('hidden');
 }
 
 function crearPdf() {
@@ -253,6 +253,7 @@ function visualizarEdicion(){
   dvAgregar.addClass('hidden');
   dvListado.addClass('hidden');
   dvEditar.removeClass('hidden');
+  dvMarcar.addClass('hidden');
 
   var id = $(this).attr('id');
 
@@ -341,11 +342,11 @@ function cancelarEdicion(){
   dvAgregar.addClass('hidden');
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
-  dvPago.addClass('hidden');
+  dvMarcar.addClass('hidden');
 }
 
 btnGuardar.on('click',agregarFactura);
 tbodyResult.delegate('.fa-trash', 'click', eliminarFactura);
-tbodyResult.delegate('.fa-pencil-square', 'click', visualizarEdicion);
+tbodyResult.delegate('.fa-pencil', 'click', visualizarEdicion);
 btnCancelarE.on('click',cancelarEdicion);
 btnGuardarE.on('click',editarFactura);

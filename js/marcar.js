@@ -13,21 +13,18 @@ var dvAgregar=$('#dvAgregar'),
     dvListado=$('#dvListado'),
     dvMarcar=$('#dvMarcar');
 
-var btnGuardarM=$('#btnGuardarM'),
-    btnCancelarM=$('#btnCancelarM');
+var dvListadoEstatus=$('#dvListadoEstatus'),
+    btnGuardarM=$('#btnGuardarM'),
+    btnCancelarM=$('#btnCancelarM'),
+    tbodyResultM=$('#tbodyResultM'),
+    dvListado=$('#dvListado');
 
-function index() {
-  dvAgregar.addClass('hidden');
-  dvListado.removeClass('hidden');
-  dvEditar.addClass('hidden');
-  dvMarcar.addClass('hidden');
+function crearPdfP() {
+  window.location.href = "pdfP.php";
 }
 
-function agregar() {
-  dvAgregar.removeClass('hidden');
-  dvListado.addClass('hidden');
-  dvEditar.addClass('hidden');
-  dvMarcar.addClass('hidden');
+function crearPdfF() {
+  window.location.href = "pdfF.php";
 }
 
 function visualizarFactura(){
@@ -125,7 +122,7 @@ function Marcar(){
         type: "success",
         showConfirmButton: true
       });
-      //getFacturas();
+      cancelarM();
 
       }
       else{
@@ -143,6 +140,50 @@ function Marcar(){
     .fail(function( jqXHR, textStatus, errorThrown ){
         alert('Ocurrio un error, intente de nuevo '+textStatus);
     });
+}
+
+function getFacturasM (){
+  dvAgregar.addClass('hidden');
+  dvListado.addClass('hidden');
+  dvEditar.addClass('hidden');
+  dvMarcar.addClass('hidden');
+  dvListadoEstatus.removeClass('hidden');
+
+  var datos = $.ajax({
+    url: 'php/marcar/facturasGetTodas.php',
+    /*data:{
+      idFac:  id
+    },*/
+    type: 'post',
+    dataType:'json',
+    async:false
+    })
+
+    .done( function( res ){
+      tbodyResultM.html('');
+      if ( res.status === 'OK' ){
+        $.each(res.data, function(k,o){
+            tbodyResultM.append(
+              '<tr>'+
+                '<td class="text-center" >'+o.numCliente+'</td>'+
+                '<td class="text-center">'+o.nomCliente+'</td>'+
+                '<td class="text-center">'+o.nomFac+'</td>'+
+                '<td class="text-center">$'+o.importeSinIVA+'</td>'+
+                '<td class="text-center">$'+o.importeTotal+'</td>'+
+                '<td class="text-center">'+o.fechaPago+'</td>'+
+                '<td class="text-center">'+o.estadoFac+'</td>'+
+              '</tr>'
+          );
+        });
+      }else{
+        tbodyResultm.html('<tr><td colspan="8" class="center"><h3>'+ res.message +'</h3></td></tr>');
+      }
+    })
+
+    .fail(function( jqXHR, textStatus, errorThrown ){
+        alert('Ocurrio un error, intente de nuevo '+textStatus);
+    });
+
 }
 
 function cancelarM(){

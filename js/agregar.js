@@ -28,6 +28,7 @@ function index() {
   dvListado.removeClass('hidden');
   dvEditar.addClass('hidden');
   dvMarcar.addClass('hidden');
+  dvListadoEstatus.addClass('hidden');
 }
 
 function agregar() {
@@ -35,6 +36,7 @@ function agregar() {
   dvListado.addClass('hidden');
   dvEditar.addClass('hidden');
   dvMarcar.addClass('hidden');
+  dvListadoEstatus.addClass('hidden');
 }
 
 function crearPdf() {
@@ -95,6 +97,8 @@ function agregarFactura(){
 }
 
 function getFacturas(){
+  dvListado.removeClass('hidden');
+  dvAgregar.addClass('hidden');
   var datos = $.ajax({
     url: 'php/facturasGetTodas.php',
     type: 'post',

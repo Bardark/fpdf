@@ -13,6 +13,7 @@
       <ul class="nav navbar-nav">
         <li><a style="cursor:pointer; cursor: hand" onclick="index();">Facturas</a></li>
         <li><a style="cursor:pointer; cursor: hand" onclick="agregar();">Agregar</a></li>
+        <li><a style="cursor:pointer; cursor: hand" onclick="getFacturasM();">Factura<br>status</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

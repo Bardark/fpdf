@@ -9,6 +9,7 @@
       include 'plantilla/agregar.php';
       include 'plantilla/editar.php';
       include 'plantilla/pagar.php';
+      include 'plantilla/estatus.php';
       include 'plantilla/footer.php';
     ?>
   </body>

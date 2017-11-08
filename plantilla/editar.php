@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <div class="elementos" id="dvListado">
+    <div class="elementos hidden" id="dvListado">
       <div class="card">
         <div class="card-header">
           <button id="btnCrearPdf" name="btnCrearPdf" onclick="crearPdf();" type="submit" class="btn btn-success">
@@ -109,7 +109,7 @@
                     Editar
                   </th>
                   <th class="text-center">
-                    Actualizar <br> estado
+                    Actualizar <br> estatus
                   </th>
                 </tr>
               </thead>

@@ -105,7 +105,7 @@ function Marcar(){
   var datos = $.ajax({
   url: 'php/marcar/facturaMarcar.php',
   data:{
-     idFacM: txtIdE.val(),
+     idFacM: txtIdP.val(),
      idEstado : txtEstadoP.val()
   },
   type: 'post',
@@ -151,9 +151,6 @@ function getFacturasM (){
 
   var datos = $.ajax({
     url: 'php/marcar/facturasGetTodas.php',
-    /*data:{
-      idFac:  id
-    },*/
     type: 'post',
     dataType:'json',
     async:false
@@ -176,7 +173,7 @@ function getFacturasM (){
           );
         });
       }else{
-        tbodyResultm.html('<tr><td colspan="8" class="center"><h3>'+ res.message +'</h3></td></tr>');
+        tbodyResultM.html('<tr><td colspan="8" class="center"><h3>'+ res.message +'</h3></td></tr>');
       }
     })
 

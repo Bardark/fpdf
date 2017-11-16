@@ -40,7 +40,7 @@
   		$pdf->Cell(15,6,$row['numCliente'],1,0,'C');
   		$pdf->Cell(60,6,$row['nomCliente'],1,0,'L');
   		$pdf->Cell(50,6,$row['nomFac'],1,0,'L');
-      $pdf->Cell(18,6,$row['importeSinIVA'],1,0,'C');
+      $pdf->Cell(18,6,$row[$'importeSinIVA'],1,0,'C');
   		$pdf->Cell(28,6,$row['importeTotal'],1,0,'C');
   		$pdf->Cell(32,6,$row['fechaPago'],1,0,'C');
 			$pdf->Cell(44,6,$row['estadoFac'],1,1,'C');
